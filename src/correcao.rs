@@ -1,10 +1,14 @@
-pub fn corrigir_palavra(dicionario: Vec<String>, palavra_digitada: String) -> Option<String> {
-    let (mut palavra_proxima, mut variacao) = (None, i32::MAX);
+pub fn corrigir_palavra(
+    dicionario: Vec<String>,
+    palavra_digitada: String,
+    variacao_maxima: u32,
+) -> Option<String> {
+    let (mut palavra_proxima, mut variacao) = (None, u32::MAX);
 
     for palavra in dicionario.iter() {
         let distancia = distancia_com_levenshtein(&palavra, &palavra_digitada);
 
-        if distancia > 2 || distancia >= variacao {
+        if distancia > variacao_maxima || distancia >= variacao {
             continue;
         }
 
@@ -15,7 +19,7 @@ pub fn corrigir_palavra(dicionario: Vec<String>, palavra_digitada: String) -> Op
     palavra_proxima.cloned()
 }
 
-fn distancia_com_levenshtein(palavra1: &String, palavra2: &String) -> i32 {
+fn distancia_com_levenshtein(palavra1: &String, palavra2: &String) -> u32 {
     let len_palavra1 = palavra1.chars().count();
     let len_palavra2 = palavra2.chars().count();
 
@@ -52,5 +56,5 @@ fn distancia_com_levenshtein(palavra1: &String, palavra2: &String) -> i32 {
         }
     }
 
-    *tabela.last().unwrap().last().unwrap() as i32
+    *tabela.last().unwrap().last().unwrap() as u32
 }

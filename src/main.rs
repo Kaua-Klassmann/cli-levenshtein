@@ -4,7 +4,8 @@ mod correcao;
 fn main() {
     let cli = cli::create_cli();
 
-    let palavra_proxima = correcao::corrigir_palavra(cli.dicionario, cli.palavra);
+    let palavra_proxima =
+        correcao::corrigir_palavra(cli.dicionario, cli.palavra, cli.variacao_maxima);
 
     match palavra_proxima {
         Some(palavra) => {
