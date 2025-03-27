@@ -1,4 +1,4 @@
-# Sistem CLI que utiliza o algoritmo de Levenshtein para calcular o menor número de altereções de uma palavra para se tornar outra
+# Sistema CLI que utiliza o algoritmo de Levenshtein para calcular o menor número de altereções de uma palavra para se tornar outra
 
 ## Funciona passando uma palavra e uma lista de palavras, retornando a palavra desse lista mais próxima da palavra original
 
